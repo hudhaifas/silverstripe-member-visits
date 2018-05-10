@@ -12,7 +12,15 @@ class MemberVisitsExtension
 
     private static $db = [
         'NumVisit' => 'Int',
-        'LastVisited' => 'SS_Datetime'
+        'LastVisited' => 'Datetime'
     ];
+
+    public function addVisit() {
+        $this->owner->NumVisit++;
+    }
+
+    public function beforeMemberLoggedIn() {
+        $this->owner->addVisit();
+    }
 
 }
