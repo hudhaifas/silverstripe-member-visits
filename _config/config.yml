@@ -1,0 +1,11 @@
+---
+Name: member-visits
+---
+
+SilverStripe\Security\Member:
+  extensions:
+    - MemberVisitsExtension
+    
+SilverStripe\Control\Controller:
+  extensions:
+    - ControllerVisitsExtension
