@@ -1,5 +1,6 @@
 <?php
 
+use SilverStripe\Forms\FieldList;
 use SilverStripe\ORM\DataExtension;
 
 /**
@@ -21,6 +22,11 @@ class MemberVisitsExtension
 
     public function beforeMemberLoggedIn() {
         $this->owner->addVisit();
+    }
+
+    public function updateCMSFields(FieldList $fields) {
+        $fields->removeFieldFromTab('Root.Main', 'NumVisit');
+        $fields->removeFieldFromTab('Root.Main', 'LastVisited');
     }
 
 }
