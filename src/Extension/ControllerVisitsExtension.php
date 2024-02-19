@@ -2,7 +2,6 @@
 
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\ORM\DB;
-use SilverStripe\Security\Member;
 use SilverStripe\Security\Security;
 
 /**
@@ -14,7 +13,7 @@ class ControllerVisitsExtension
         extends DataExtension {
 
     public function onAfterInit() {
-        if (Security::database_is_ready() && ($member = Member::currentUser())) {
+        if (Security::database_is_ready() && ($member = Security::getCurrentUser())) {
             DB::prepared_query(
                     sprintf('UPDATE "Member" SET "LastVisited" = %s WHERE "ID" = ?', DB::get_conn()->now()), [
                 $member->ID
