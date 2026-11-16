@@ -1,7 +1,7 @@
 <?php
 
+use SilverStripe\Core\Extension;
 use SilverStripe\Forms\FieldList;
-use SilverStripe\ORM\DataExtension;
 
 /**
  *
@@ -9,7 +9,7 @@ use SilverStripe\ORM\DataExtension;
  * @version 1.0, Apr 27, 2018 - 10:27:12 AM
  */
 class MemberVisitsExtension
-        extends DataExtension {
+        extends Extension {
 
     private static $db = [
         'NumVisit' => 'Int',
@@ -20,7 +20,7 @@ class MemberVisitsExtension
         $this->owner->NumVisit++;
     }
 
-    public function beforeMemberLoggedIn() {
+    public function onBeforeMemberLoggedIn() {
         $this->owner->addVisit();
     }
 

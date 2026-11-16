@@ -1,6 +1,6 @@
 <?php
 
-use SilverStripe\ORM\DataExtension;
+use SilverStripe\Core\Extension;
 use SilverStripe\ORM\DB;
 use SilverStripe\Security\Security;
 
@@ -10,7 +10,7 @@ use SilverStripe\Security\Security;
  * @version 1.0, Apr 27, 2018 - 10:27:12 AM
  */
 class ControllerVisitsExtension
-        extends DataExtension {
+        extends Extension {
 
     public function onAfterInit() {
         if (Security::database_is_ready() && ($member = Security::getCurrentUser())) {
